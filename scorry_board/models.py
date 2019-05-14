@@ -104,7 +104,7 @@ class News(models.Model):
 
 
 class Task(models.Model):
-    title = models.CharField(max_length=100, blank=False)
+    title = models.CharField(name='title', max_length=100, blank=False)
     score = models.IntegerField(name='score', blank=False)
     category = models.ForeignKey(Category, blank=False)
     rating = models.ForeignKey(Lvl, blank=False) #Рейтинг сложности задачи
