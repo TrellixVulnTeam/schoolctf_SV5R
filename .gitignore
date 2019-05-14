@@ -58,4 +58,6 @@ coverage.xml\
 \cf2 # Sphinx documentation\cf4 \
 docs/_build/\
 \
-.DS_Store}
+.DS_Store
+.idea/
+.idea}
