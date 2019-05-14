@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/py3env/bin/python3.5
 # -*- coding: utf-8-sig -*-
 from __future__ import unicode_literals
 
@@ -104,7 +104,7 @@ class News(models.Model):
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=100, blank=False)
+    title = models.CharField(max_length=100, blank=False)
     score = models.IntegerField(name='score', blank=False)
     category = models.ForeignKey(Category, blank=False)
     rating = models.ForeignKey(Lvl, blank=False) #Рейтинг сложности задачи

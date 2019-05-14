@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/py3env/bin/python3.5
 # -*- coding: utf-8-sig -*-
 from django import forms
 from django.contrib import admin
@@ -40,15 +40,15 @@ admin.site.register(SolvedTasks, SolvedTasksModelAdmin)
 
 
 class TaskModelAdmin(SummernoteModelAdmin):
-    list_display = ('name', 'category', 'rating', 'score')
+    list_display = ('title', 'category', 'rating', 'score')
     list_filter = ('category', 'rating', 'score',)
     fieldsets = (
-        (None, {'fields': ('name',)}),
+        (None, {'fields': ('title',)}),
         ('Task info', {'fields': ('category', 'rating', 'score', 'flag', 'is_enabled')}),
         ('Task text', {'fields': ('text', 'task_file',)}),
     )
-    search_fields = ('name',)
-    ordering = ('name',)
+    search_fields = ('title',)
+    ordering = ('title',)
     filter_horizontal = ()
 
 
@@ -64,7 +64,7 @@ class CategoryModelAdmin(ModelAdmin):
 admin.site.register(Category, CategoryModelAdmin)
 
 class LvlModelAdmin(ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'position',)
     search_fields = ('title',)
     filter_horizontal = ()
 

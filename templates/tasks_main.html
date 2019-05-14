@@ -4,8 +4,13 @@
     <h2>Задания</h2>
     <div class="table-responsive">
         <table class="table">
+        <thead>
+            <td>Категория</td>
+            <td>Название и баллы</td>
+            <td>Уровень сложности</td>
+        </thead>
             <tbody>
-                {% for category,task_list in tasks.items %}
+                {% for category, task_list in tasks.items %}
                     <tr>
                         <th>
                             <h4>{{ category.title }}</h4>
@@ -15,18 +20,23 @@
                                     {% if task_tuple.is_enabled %}
                                         {% if task_tuple.is_solved %}
                                             <a class="btn btn-success disabled" href="#">
-                                                {{ category.title }} {{ task_tuple.score }}
+                                                {{ task_tuple.}} {{ task_tuple.score }}
                                             </a>
                                         {% else %}
                                             <a class="btn btn-primary" href="{% url 'scorry_tasks_details' task_tuple.pk %}">
-                                                {{ category.title }} {{ task_tuple.score }}
+                                                {{ task_tuple.name }} {{ task_tuple.score }}
                                             </a>
                                         {% endif %}
                                     {% else %}
-                                        <a href="#" class="btn btn-primary disabled">{{ category.title }} {{ task_tuple.score }}</a>
+                                        <a href="#" class="btn btn-primary disabled">{{ task_tuple.name }} {{ task_tuple.score }}</a>
                                     {% endif %}
                                 </td>
                             {% endfor %}
+                        <th>
+                            {% for rating in tasks_list %}
+                                <h4>{{ rating.title }}</h4>
+                            {% endfor %}
+                        </th>
                     </tr>
                 {% endfor %}
             </tbody>
