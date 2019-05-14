@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8-sig -*-
 from django import forms
 from django.contrib import admin
 
@@ -14,7 +14,7 @@ from django.contrib.flatpages.models import FlatPage
 from django.db import models
 from django_summernote.admin import SummernoteModelAdmin
 from django_summernote.widgets import SummernoteWidget
-from scorry_board.models import Task, Team, Category, News, SolvedTasks
+from scorry_board.models import *
 
 
 class NewsModelAdmin(SummernoteModelAdmin):
@@ -62,6 +62,14 @@ class CategoryModelAdmin(ModelAdmin):
 
 
 admin.site.register(Category, CategoryModelAdmin)
+
+class LvlModelAdmin(ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    filter_horizontal = ()
+
+
+admin.site.register(Lvl, LvlModelAdmin)
 
 
 class UserCreationForm(forms.ModelForm):

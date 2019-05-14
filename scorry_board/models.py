@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8-sig -*-
 from __future__ import unicode_literals
 
 import os
@@ -80,6 +80,15 @@ class Category(models.Model):
     class Meta:
         ordering = ('position',)
 
+class Lvl (models.Model):
+    title = models.CharField(max_length=50)
+    position = models.IntegerField(name='position', unique=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ('position', 'title',)
 
 class News(models.Model):
     title = models.CharField(max_length=50, name="title", verbose_name="Заголовок новости")
@@ -98,7 +107,7 @@ class Task(models.Model):
     name = models.CharField(max_length=100, blank=False)
     score = models.IntegerField(name='score', blank=False)
     category = models.ForeignKey(Category, blank=False)
-    rating = models.IntegerField(name='rating', blank=False) #Рейтинг сложности задачи
+    rating = models.ForeignKey(Lvl, blank=False) #Рейтинг сложности задачи
     text = models.TextField(name='text', blank=False)
     task_file = models.FileField(verbose_name="task_files", upload_to="task_files", blank=True)
     flag = models.CharField(max_length=100, blank=False)
