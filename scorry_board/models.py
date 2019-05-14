@@ -95,10 +95,11 @@ class News(models.Model):
 
 class Task(models.Model):
     name = models.CharField(max_length=100, blank=False)
-    score = models.IntegerField(name='score', blank=False)
+    score = models.IntegerField(name='Баллы', blank=False)
     category = models.ForeignKey(Category, blank=False)
-    text = models.TextField(name='text', blank=False)
-    task_file = models.FileField(verbose_name="Task file", upload_to="task_files", blank=True)
+    rating = models.IntegerField(name=￿'￿Рейтинг сложности', blank=False) #Рейтинг сложности задачи
+    text = models.TextField(name='Текст задания', blank=False)
+    task_file = models.FileField(verbose_name="Файл(ы) задания", upload_to="task_files", blank=True)
     flag = models.CharField(max_length=100, blank=False)
     is_enabled = models.BooleanField(default=False)
 

@@ -41,7 +41,7 @@ class TaskModelAdmin(SummernoteModelAdmin):
     list_filter = ('category', 'score',)
     fieldsets = (
         (None, {'fields': ('name',)}),
-        ('Task info', {'fields': ('category', 'score', 'flag', 'is_enabled')}),
+        ('Task info', {'fields': ('category', ￿￿'rating', 'score', 'flag', 'is_enabled')}),
         ('Task text', {'fields': ('text', 'task_file',)}),
     )
     search_fields = ('name',)
