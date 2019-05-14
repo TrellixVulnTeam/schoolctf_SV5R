@@ -1,5 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib import admin
+
 
 # Register your models here.
 from django.contrib.admin.options import ModelAdmin
@@ -37,11 +40,11 @@ admin.site.register(SolvedTasks, SolvedTasksModelAdmin)
 
 
 class TaskModelAdmin(SummernoteModelAdmin):
-    list_display = ('name', 'category', 'score')
-    list_filter = ('category', 'score',)
+    list_display = ('name', 'category', 'rating', 'score')
+    list_filter = ('category', 'rating', 'score',)
     fieldsets = (
         (None, {'fields': ('name',)}),
-        ('Task info', {'fields': ('category', ￿￿'rating', 'score', 'flag', 'is_enabled')}),
+        ('Task info', {'fields': ('category', 'rating', 'score', 'flag', 'is_enabled')}),
         ('Task text', {'fields': ('text', 'task_file',)}),
     )
     search_fields = ('name',)

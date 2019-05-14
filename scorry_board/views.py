@@ -1,4 +1,5 @@
-# coding=utf-8
+#!/usr/bin/python
+# -*- coding: utf-8-sig -*-
 import json
 from collections import defaultdict
 
@@ -55,9 +56,9 @@ def logout_user(request):
 @login_required
 def tasks(request):
     pivot = defaultdict(list)
-    for result in Task.objects.values('category', 'score', 'is_enabled', 'pk').order_by('category', 'score'):
+    for result in Task.objects.values('category', 'rating', 'score', 'is_enabled', 'pk').order_by('category', 'score', 'rating'):
         pivot[Category.objects.get(pk=result['category'])].append(
-            {"score": result["score"], "is_enabled": result["is_enabled"], "pk": result["pk"],
+            {"rating": result["rating"], "score": result["score"], "is_enabled": result["is_enabled"], "pk": result["pk"],
              "is_solved": SolvedTasks.objects.filter(task=Task.objects.get(pk=result["pk"]),
                                                      team=request.user).exists()})
     return TemplateResponse(request, "tasks_main.html", {"tasks": dict(pivot)})

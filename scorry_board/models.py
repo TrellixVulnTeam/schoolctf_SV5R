@@ -1,4 +1,5 @@
-# coding=utf-8
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import os
@@ -95,11 +96,11 @@ class News(models.Model):
 
 class Task(models.Model):
     name = models.CharField(max_length=100, blank=False)
-    score = models.IntegerField(name='Баллы', blank=False)
+    score = models.IntegerField(name='score', blank=False)
     category = models.ForeignKey(Category, blank=False)
-    rating = models.IntegerField(name=￿'￿Рейтинг сложности', blank=False) #Рейтинг сложности задачи
-    text = models.TextField(name='Текст задания', blank=False)
-    task_file = models.FileField(verbose_name="Файл(ы) задания", upload_to="task_files", blank=True)
+    rating = models.IntegerField(name='rating', blank=False) #Рейтинг сложности задачи
+    text = models.TextField(name='text', blank=False)
+    task_file = models.FileField(verbose_name="task_files", upload_to="task_files", blank=True)
     flag = models.CharField(max_length=100, blank=False)
     is_enabled = models.BooleanField(default=False)
 
