@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1251\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red132\green134\blue132;\red242\green242\blue242;\red38\green38\blue38;
+\red148\green6\blue75;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+# Byte-compiled / optimized / DLL files\cf4 \
+__pycache__/\
+*.py[cod]\
+\
+\cf2 # C extensions\cf4 \
+*.so\
+\
+\cf2 # Distribution / packaging\cf4 \
+bin/\
+build/\
+develop-eggs/\
+dist/\
+eggs/\
+lib/\
+lib64/\
+parts/\
+sdist/\
+var/\
+*.egg-info/\
+.installed.cfg\
+*.egg\
+\
+\cf2 # Installer logs\cf4 \
+pip-log.txt\
+pip-\cf5 delete\cf4 -\cf5 this\cf4 -directory.txt\
+\
+\cf2 # Unit test / coverage reports\cf4 \
+.tox/\
+.coverage\
+.cache\
+nosetests.xml\
+coverage.xml\
+\
+\cf2 # Translations\cf4 \
+*.mo\
+\
+\cf2 # Mr Developer\cf4 \
+.mr.developer.cfg\
+.project\
+.pydevproject\
+\
+\cf2 # Rope\cf4 \
+.ropeproject\
+\
+\cf2 # Django stuff:\cf4 \
+*.log\
+*.pot\
+\
+\cf2 # Sphinx documentation\cf4 \
+docs/_build/\
+\
+.DS_Store}
