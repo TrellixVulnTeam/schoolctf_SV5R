@@ -14,7 +14,7 @@ from django.template.response import TemplateResponse
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 
-from scorry_board.models import News, Task, SolvedTasks, Category
+from scorry_board.models import *
 
 
 def index(request):
@@ -56,9 +56,9 @@ def logout_user(request):
 @login_required
 def tasks(request):
     pivot = defaultdict(list)
-    for result in Task.objects.values('category', 'rating', 'score', 'is_enabled', 'pk').order_by('category', 'score', 'rating'):
+    for result in Task.objects.values('category', 'score', 'rating', 'is_enabled', 'pk').order_by('category', 'score', 'rating'):
         pivot[Category.objects.get(pk=result['category'])].append(
-            {"rating": result["rating"], "score": result["score"], "is_enabled": result["is_enabled"], "pk": result["pk"],
+            {"score": result["score"], "rating": result["rating"], "is_enabled": result["is_enabled"], "pk": result["pk"],
              "is_solved": SolvedTasks.objects.filter(task=Task.objects.get(pk=result["pk"]),
                                                      team=request.user).exists()})
     return TemplateResponse(request, "tasks_main.html", {"tasks": dict(pivot)})

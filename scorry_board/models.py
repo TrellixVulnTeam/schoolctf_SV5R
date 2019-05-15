@@ -80,7 +80,7 @@ class Category(models.Model):
     class Meta:
         ordering = ('position',)
 
-class Lvl (models.Model):
+class Rating(models.Model):
     title = models.CharField(max_length=50)
     position = models.IntegerField(name='position', unique=True)
 
@@ -88,7 +88,7 @@ class Lvl (models.Model):
         return self.title
 
     class Meta:
-        ordering = ('position', 'title',)
+        ordering = ('position',)
 
 class News(models.Model):
     title = models.CharField(max_length=50, name="title", verbose_name="Заголовок новости")
@@ -107,14 +107,14 @@ class Task(models.Model):
     title = models.CharField(name='title', max_length=100, blank=False)
     score = models.IntegerField(name='score', blank=False)
     category = models.ForeignKey(Category, blank=False)
-    rating = models.ForeignKey(Lvl, blank=False) #Рейтинг сложности задачи
+    rating = models.ForeignKey(Rating, blank=False) #Рейтинг сложности задачи
     text = models.TextField(name='text', blank=False)
     task_file = models.FileField(verbose_name="task_files", upload_to="task_files", blank=True)
     flag = models.CharField(max_length=100, blank=False)
     is_enabled = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def gen_file_link(self):
         if self.task_file:

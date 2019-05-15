@@ -63,13 +63,13 @@ class CategoryModelAdmin(ModelAdmin):
 
 admin.site.register(Category, CategoryModelAdmin)
 
-class LvlModelAdmin(ModelAdmin):
+class RatingModelAdmin(ModelAdmin):
     list_display = ('title', 'position',)
     search_fields = ('title',)
     filter_horizontal = ()
 
 
-admin.site.register(Lvl, LvlModelAdmin)
+admin.site.register(Rating, RatingModelAdmin)
 
 
 class UserCreationForm(forms.ModelForm):

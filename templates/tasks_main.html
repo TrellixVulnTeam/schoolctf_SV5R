@@ -1,44 +1,43 @@
 {% extends "main.html" %}
+
+
 {% block title %}TrackCTF - Задания{% endblock %}
 {% block main_content%}
     <h2>Задания</h2>
-    <div class="table-responsive">
-        <table class="table">
+    <div style="border: 0 !important;" class="table-responsive">
+        <table class="table" >
         <thead>
             <td>Категория</td>
-            <td>Название и баллы</td>
-            <td>Уровень сложности</td>
+            <td>Баллы</td>
+            <td>Уровень сложности (1 - very easy, 5 - very hard)</td>
         </thead>
             <tbody>
                 {% for category, task_list in tasks.items %}
+                    {% for task_tuple in task_list %}
                     <tr>
-                        <th>
+                        <th style="border: 0 !important;">
                             <h4>{{ category.title }}</h4>
                         </th>
-                            {% for task_tuple in task_list %}
-                                <td>
+                                <td style="border: 0 !important;">
                                     {% if task_tuple.is_enabled %}
                                         {% if task_tuple.is_solved %}
                                             <a class="btn btn-success disabled" href="#">
-                                                {{ task_tuple.title }} {{ task_tuple.score }}
+                                                {{ category.title }} {{ task_tuple.score }}
                                             </a>
                                         {% else %}
                                             <a class="btn btn-primary" href="{% url 'scorry_tasks_details' task_tuple.pk %}">
-                                                {{ task_tuple.title }} {{ task_tuple.score }}
+                                                {{ category.title }} {{ task_tuple.score }}
                                             </a>
                                         {% endif %}
                                     {% else %}
-                                        <a href="#" class="btn btn-primary disabled">{{ task_tuple.title }} {{ task_tuple.score }}</a>
+                                        <a href="#" class="btn btn-primary disabled">{{ category.title }} {{ task_tuple.score }}</a>
                                     {% endif %}
                                 </td>
-                            {% endfor %}
-                        <th>
-                            {% for task_list in tasks.items %}
-                                <h4>{{ rating.title }}</h4>
-                            {% endfor %}
-
+                            <th style="border: 0 !important;">
+                                <h4>{{ task_tuple.rating }}</h4>
                         </th>
                     </tr>
+                            {% endfor %}
                 {% endfor %}
             </tbody>
         </table>
